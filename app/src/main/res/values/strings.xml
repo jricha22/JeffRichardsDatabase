@@ -4,4 +4,7 @@
     <string name="prod_id_label">Product ID</string>
     <string name="product_name_label">Product Name</string>
     <string name="product_quantity_label">Product Quantity</string>
+    <string name="add_button_label">ADD</string>
+    <string name="find_button_label">FIND</string>
+    <string name="delete_button_label">DELETE</string>
 </resources>
