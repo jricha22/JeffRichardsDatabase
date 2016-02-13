@@ -19,20 +19,23 @@ public class DatabaseActivity extends AppCompatActivity {
 
         this.idView = (TextView) findViewById(R.id.productID);
         this.productBox = (EditText) findViewById(R.id.productName);
-        this.quantityBox =
-                (EditText) findViewById(R.id.productQuantity);
+        this.quantityBox = (EditText) findViewById(R.id.productQuantity);
     }
 
     public void newProduct (View view) {
         MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
 
-        int quantity =
-                Integer.parseInt(quantityBox.getText().toString());
+        int quantity;
+        try {
+            quantity = Integer.parseInt(quantityBox.getText().toString());
+        } catch (NumberFormatException e) {
+            quantity = 0;
+        }
 
-        Product product =
-                new Product(productBox.getText().toString(), quantity);
+        Product product = new Product(productBox.getText().toString(), quantity);
 
         dbHandler.addProduct(product);
+        idView.setText(getResources().getString(R.string.record_added));
         productBox.setText("");
         quantityBox.setText("");
     }
@@ -67,5 +70,39 @@ public class DatabaseActivity extends AppCompatActivity {
         }
         else
             idView.setText(getResources().getString(R.string.no_match_found));
+    }
+
+    public void updateProduct (View view) {
+        MyDBHandler dbHandler = new MyDBHandler(this, null,
+                null, 1);
+        int productId;
+        int quantity;
+        try{
+            productId = Integer.parseInt(idView.getText().toString());
+            quantity = Integer.parseInt(quantityBox.getText().toString());
+        } catch (NumberFormatException e) {
+            idView.setText(getResources().getString(R.string.invalid_update));
+            return;
+        }
+
+        Product product = new Product(productId, productBox.getText().toString(), quantity);
+        boolean result = dbHandler.updateProduct(product);
+
+        if (result)
+        {
+            idView.setText(getResources().getString(R.string.record_updated));
+        }
+        else
+        {
+            idView.setText(getResources().getString(R.string.no_match_found));
+        }
+    }
+
+    public void deleteAllProduct (View view) {
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+        int count = dbHandler.deleteAllProduct();
+        idView.setText("" + count + " " + getResources().getString(R.string.all_deleted));
+        productBox.setText("");
+        quantityBox.setText("");
     }
 }

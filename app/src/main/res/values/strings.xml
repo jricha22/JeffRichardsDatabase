@@ -9,4 +9,11 @@
     <string name="delete_button_label">DELETE</string>
     <string name="no_match_found">No Match Found</string>
     <string name="record_deleted">Record Deleted</string>
+    <string name="update_button_label">Update</string>
+    <string name="delete_all_button_label">Delete All</string>
+    <string name="record_updated">Record Updated</string>
+    <string name="delete_failed">Delete All Failed</string>
+    <string name="all_deleted">Records Deleted</string>
+    <string name="record_added">Record Added</string>
+    <string name="invalid_update">Invalid Update</string>
 </resources>

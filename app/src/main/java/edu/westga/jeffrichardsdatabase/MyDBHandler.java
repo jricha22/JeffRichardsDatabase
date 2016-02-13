@@ -98,4 +98,19 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public boolean updateProduct(Product product) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PRODUCTNAME, product.getProductName());
+        values.put(COLUMN_QUANTITY, product.getQuantity());
+        int count = db.update(TABLE_PRODUCTS, values, COLUMN_ID + " = " + product.getID(), null);
+        db.close();
+        return (count == 1);
+    }
+
+    public int deleteAllProduct() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_PRODUCTS, "1", null);
+    }
+
 }
