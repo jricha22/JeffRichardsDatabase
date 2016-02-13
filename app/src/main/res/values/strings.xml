@@ -7,4 +7,6 @@
     <string name="add_button_label">ADD</string>
     <string name="find_button_label">FIND</string>
     <string name="delete_button_label">DELETE</string>
+    <string name="no_match_found">No Match Found</string>
+    <string name="record_deleted">Record Deleted</string>
 </resources>
