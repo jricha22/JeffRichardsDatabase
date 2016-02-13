@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">JeffRichardsDatabase</string>
+    <string name="default_prod_id">Not Assigned</string>
+    <string name="prod_id_label">Product ID</string>
+    <string name="product_name_label">Product Name</string>
+    <string name="product_quantity_label">Product Quantity</string>
 </resources>
